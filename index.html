@@ -41,6 +41,13 @@
         .footer-actions { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 10px; }
         .footer-actions button { background-color: #0f172a; border: 1px solid #1e293b; font-size: 11px; font-weight: 700; color: var(--text-muted); height: 45px; text-transform: uppercase; flex-direction: column; gap: 2px; }
         .info-bar { text-align: center; font-size: 10px; color: #334155; margin-top: 10px; }
+        
+        /* New Elegant Signature Section */
+        .credits-section { display: flex; justify-content: space-between; align-items: center; margin-top: 15px; padding: 10px 5px 0 5px; border-top: 1px solid #1e293b; font-size: 10px; font-weight: 500; color: #475569; letter-spacing: 0.3px; }
+        .credits-designer { color: #64748b; }
+        .credits-designer span { color: #94a3b8; font-weight: 600; }
+        .credits-phone { color: #475569; text-decoration: none; transition: color 0.2s ease; }
+        .credits-phone:hover { color: #38bdf8; }
     </style>
 </head>
 <body>
@@ -93,6 +100,11 @@
         <button onclick="copyResult()"><span>📋</span><span>Copy Result</span></button>
     </div>
     <div class="info-bar">All results are rounded to the nearest 1/32</div>
+    
+    <div class="credits-section">
+        <div class="credits-designer">Design by <span>Amirreza Arzeroomchi</span></div>
+        <a href="tel:+14088317711" class="credits-phone">+1 (408) 831-7711</a>
+    </div>
 </div>
 <script>
     let tokens = [];
