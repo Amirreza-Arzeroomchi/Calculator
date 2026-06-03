@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Fraction Calculator - Amirreza</title>
+    
+    <!-- iPhone Web App Settings & Embedded Clean Icon -->
+    <link rel="apple-touch-icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' width='512' height='512'><rect width='512' height='512' rx='112' fill='%23131a26'/><rect x='96' y='96' width='320' height='320' rx='40' fill='%23e26d14'/><rect x='128' y='128' width='256' height='80' rx='16' fill='%231a2333'/><circle cx='160' cy='280' r='24' fill='%23ffffff'/><circle cx='256' cy='280' r='24' fill='%23ffffff'/><circle cx='352' cy='280' r='24' fill='%23ffffff'/><circle cx='160' cy='360' r='24' fill='%23ffffff'/><circle cx='256' cy='360' r='24' fill='%23ffffff'/><rect x='328' y='320' width='48' height='80' rx='24' fill='%232e7d32'/></svg>">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <style>
+        :root {
+            --bg-color: #0b111e;
+            --calc-bg: #131a26;
+            --display-bg: #1a2333;
+            --btn-bg: #1e293b;
+            --btn-text: #e2e8f0;
+            --btn-hover: #2d3748;
+            --op-bg: #e26d14;
+            --equal-bg: #2e7d32;
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 15px;
+        }
+
+        .designer-branding {
+            text-align: center;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #e26d14, #2563eb);
+            padding: 12px 25px;
+            border-radius: 14px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            max-width: 440px;
+            width: 100%;
+        }
+
+        .designer-branding h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 3px;
+        }
+
+        .designer-branding p {
+            font-size: 13px;
+            color: #cbd5e1;
+        }
+
+        .calculator {
+            background-color: var(--calc-bg);
+            width: 100%;
+            max-width: 440px;
+            border-radius: 24px;
+            padding: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            border: 1px solid #233147;
+        }
+
+        .calc-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 11px;
+            color: #64748b;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .display-container {
+            background-color: var(--display-bg);
+            border-radius: 16px;
+            padding: 15px;
+            margin-bottom: 15px;
+            border: 1px solid #243249;
+        }
+
+        .display-section {
+            margin-bottom: 10px;
+        }
+
+        .label {
+            font-size: 10px;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .expression {
+            font-size: 28px;
+            min-height: 42px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .result {
+            font-size: 38px;
+            font-weight: bold;
+            min-height: 52px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #fff;
+        }
+
+        .decimal-equivalent {
+            font-size: 14px;
+            color: #64748b;
+            text-align: right;
+        }
+
+        .fraction-render {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            vertical-align: middle;
+            line-height: 1;
+            margin: 0 4px;
+        }
+        .fraction-render .sub-num { 
+            border-bottom: 1.5px solid #fff; 
+            padding-bottom: 2px; 
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .fraction-render .sub-den { 
+            padding-top: 2px; 
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .grid-5 {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .grid-5 button.double-w { grid-column: span 2; }
+
+        button {
+            background-color: var(--btn-bg);
+            color: var(--btn-text);
+            border: none;
+            border-radius: 10px;
+            padding: 14px 0;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        button:active {
+            opacity: 0.7;
+            background-color: var(--btn-hover);
+        }
+
+        button.op-btn { background-color: var(--op-bg); color: white; font-size: 20px;}
+        button.eq-btn { background-color: var(--equal-bg); color: white; font-size: 22px;}
+        button.utility { color: #94a3b8; font-size: 14px;}
+
+        .quick-fractions-title {
+            font-size: 11px;
+            color: #475569;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .quick-grid {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            gap: 6px;
+            margin-bottom: 15px;
+        }
+
+        .quick-grid button {
+            padding: 8px 0;
+            background-color: #162030;
+            border: 1px solid #1e293b;
+            border-radius: 6px;
+        }
+        
+        .quick-grid button .fraction-render .sub-num,
+        .quick-grid button .fraction-render .sub-den {
+            font-size: 12px;
+        }
+
+        .bottom-actions {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+        }
+
+        .bottom-actions button {
+            background: transparent;
+            border: 1px solid #1e293b;
+            font-size: 11px;
+            color: #64748b;
+            padding: 12px 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="designer-branding">
+    <h3>Design by Amirreza Arzeroomchi</h3>
+    <p>📱 +1 (408) 593-4676</p>
+</div>
+
+<div class="calculator">
+    <div class="calc-header">
+        <span>FRACTION CALCULATOR</span>
+        <div>🌙 🕒 •••</div>
+    </div>
+
+    <div class="display-container">
+        <div class="display-section">
+            <span class="label">Expression</span>
+            <div class="expression" id="exprDisplay">0</div>
+        </div>
+        <div class="display-section">
+            <span class="label">Result</span>
+            <div class="result" id="resDisplay">-</div>
+            <div class="decimal-equivalent" id="decDisplay"></div>
+        </div>
+    </div>
+
+    <div class="grid-5">
+        <button class="utility" data-action="AC">AC</button>
+        <button class="utility" data-action="BACK">⌫</button>
+        <button class="utility" data-action="%">%</button>
+        <button class="utility" data-action="±">±</button>
+        <button class="op-btn" data-op="/">÷</button>
+
+        <button data-num="7">7</button>
+        <button data-num="8">8</button>
+        <button data-num="9">9</button>
+        <button class="utility" data-action="sq">x²</button>
+        <button class="op-btn" data-op="*">×</button>
+
+        <button data-num="4">4</button>
+        <button data-num="5">5</button>
+        <button data-num="6">6</button>
+        <button class="utility" data-action="ab">a/b</button>
+        <button class="op-btn" data-op="-">−</button>
+
+        <button data-num="1">1</button>
+        <button data-num="2">2</button>
+        <button data-num="3">3</button>
+        <button data-num=".">.</button>
+        <button class="op-btn" data-op="+">+</button>
+
+        <button class="double-w" data-num="0">0</button>
+        <button class="utility" data-action="space">␣ Space</button>
+        <button class="eq-btn double-w" data-action="=">=</button>
+    </div>
+
+    <div class="quick-fractions-title">Fractions (in 32nds)</div>
+    <div class="quick-grid" id="quickGrid">
+        <!-- Quick fractions populated by JS -->
+    </div>
+
+    <div class="bottom-actions">
+        <button data-action="BACK">← Undo</button>
+        <button data-action="AC" style="color: #ef4444;">🗑️ Clear Entry</button>
+        <button id="copyBtn">📋 Copy Result</button>
+    </div>
+</div>
+
+<script>
+    let tokens = [];
+
+    const fracs = [
+        [1,32],[1,16],[3,32],[1,8],[5,32],[3,16],[7,32],[1,4],
+        [9,32],[5,16],[11,32],[3,8],[13,32],[7,16],[15,32],[1,2]
+    ];
+    const quickGrid = document.getElementById('quickGrid');
+    fracs.forEach(f => {
+        let btn = document.createElement('button');
+        btn.innerHTML = `<div class="fraction-render"><span class="sub-num">${f[0]}</span><span class="sub-den">${f[1]}</span></div>`;
+        btn.addEventListener('click', () => pressFrac(f[0], f[1]));
+        btn.addEventListener('touchstart', (e) => {}, {passive: true});
+        quickGrid.appendChild(btn);
+    });
+
+    // Display Updater
+    function updateDisplay() {
+        const expr = document.getElementById('exprDisplay');
+        if (tokens.length === 0) {
+            expr.innerHTML = "0";
+            return;
+        }
+        let htmlContent = "";
+        tokens.forEach(t => {
+            if (t.type === 'number' || t.type === 'symbol') {
+                htmlContent += t.val;
+            } else if (t.type === 'operator') {
+                let opMap = {'+': ' + ', '-': ' − ', '*': ' × ', '/': ' ÷ '};
+                htmlContent += opMap[t.val] || t.val;
+            } else if (t.type === 'fraction') {
+                htmlContent += `<div class="fraction-render"><span class="sub-num">${t.num}</span><span class="sub-den">${t.den}</span></div>`;
+            } else if (t.type === 'space') {
+                htmlContent += " ";
+            }
+        });
+        expr.innerHTML = htmlContent;
+    }
+
+    function pressNum(num) {
+        let last = tokens[tokens.length - 1];
+        if (last && last.type === 'number') {
+            last.val += num;
+        } else {
+            tokens.push({type: 'number', val: num});
+        }
+        updateDisplay();
+    }
+
+    function pressOp(op) {
+        tokens.push({type: 'operator', val: op});
+        updateDisplay();
+    }
+
+    function pressFrac(num, den) {
+        tokens.push({type: 'fraction', num: num, den: den});
+        updateDisplay();
+    }
+
+    function pressAction(action) {
+        if (action === 'AC') {
+            tokens = [];
+            document.getElementById('resDisplay').innerHTML = "-";
+            document.getElementById('decDisplay').innerHTML = "";
+        } else if (action === 'BACK') {
+            if (tokens.length > 0) {
+                let last = tokens[tokens.length - 1];
+                if (last.type === 'number' && last.val.length > 1) {
+                    last.val = last.val.slice(0, -1);
+                } else {
+                    tokens.pop();
+                }
+            }
+        } else if (action === 'space') {
+            tokens.push({type: 'space', val: ' '});
+        } else if (action === 'ab') {
+            tokens.push({type: 'symbol', val: '/'});
+        } else if (action === '(' || action === ')' || action === '%' || action === '±') {
+            tokens.push({type: 'symbol', val: action});
+        } else if (action === 'sq') {
+            tokens.push({type: 'symbol', val: '^2'});
+        } else if (action === '=') {
+            runEvaluation();
+        }
+        updateDisplay();
+    }
+
+    function gcd(a, b) { return b ? gcd(b, a % b) : Math.abs(a); }
+
+    function runEvaluation() {
+        try {
+            let mathString = "";
+            for (let i = 0; i < tokens.length; i++) {
+                let current = tokens[i];
+                if (current.type === 'number') {
+                    let next = tokens[i+1];
+                    if (next && next.type === 'space' && tokens[i+2] && tokens[i+2].type === 'fraction') {
+                        let frac = tokens[i+2];
+                        mathString += `(${current.val}+(${frac.num}/${frac.den}))`;
+                        i += 2;
+                    } else if (next && next.type === 'fraction') {
+                        mathString += `(${current.val}+(${next.num}/${next.den}))`;
+                        i += 1;
+                    } else {
+                        mathString += current.val;
+                    }
+                } else if (current.type === 'fraction') {
+                    mathString += `(${current.num}/${current.den})`;
+                } else if (current.type === 'operator') {
+                    mathString += current.val;
+                } else if (current.type === 'symbol') {
+                    if (current.val === '^2') mathString += '**2';
+                    else mathString += current.val;
+                }
+            }
+
+            if (mathString.trim() === "") return;
+            let decimalRes = Function(`"use strict"; return (${mathString})`)();
+            if (isNaN(decimalRes) || !isFinite(decimalRes)) throw new Error();
+
+            document.getElementById('decDisplay').innerHTML = `= ${decimalRes.toFixed(4)}`;
+
+            let sign = decimalRes < 0 ? "-" : "";
+            let absVal = Math.abs(decimalRes);
+            let whole = Math.floor(absVal);
+            let fractionPart = absVal - whole;
+
+            if (fractionPart < 0.0001) {
+                document.getElementById('resDisplay').innerHTML = sign + whole;
+                return;
+            }
+
+            let precision = 32;
+            let numerator = Math.round(fractionPart * precision);
+
+            if (numerator === precision) {
+                whole += 1;
+                document.getElementById('resDisplay').innerHTML = sign + whole;
+            } else if (numerator === 0) {
+                document.getElementById('resDisplay').innerHTML = sign + whole;
+            } else {
+                let common = gcd(numerator, precision);
+                let finalNum = numerator / common;
+                let finalDen = precision / common;
+                let wholeText = whole > 0 ? `${sign}${whole} ` : (sign === "-" ? "-" : "");
+                document.getElementById('resDisplay').innerHTML = `${wholeText}<div class="fraction-render"><span class="sub-num">${finalNum}</span><span class="sub-den">${finalDen}</span></div>`;
+            }
+        } catch (e) {
+            document.getElementById('resDisplay').innerHTML = "<span style='color:#ef4444; font-size:20px;'>Error</span>";
+        }
+    }
+
+    document.querySelectorAll('button[data-num]').forEach(b => {
+        b.addEventListener('click', () => pressNum(b.getAttribute('data-num')));
+    });
+    document.querySelectorAll('button[data-op]').forEach(b => {
+        b.addEventListener('click', () => pressOp(b.getAttribute('data-op')));
+    });
+    document.querySelectorAll('button[data-action]').forEach(b => {
+        b.addEventListener('click', () => pressAction(b.getAttribute('data-action')));
+    });
+    document.getElementById('copyBtn').addEventListener('click', () => {
+        navigator.clipboard.writeText(document.getElementById('resDisplay').innerText);
+        alert("Result copied to clipboard!");
+    });
+</script>
+</body>
+</html>
