@@ -4,432 +4,131 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Fraction Calculator</title>
-
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Calculator">
-    
-    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='140' fill='%230f172a'/%3E%3Crect x='40' y='40' width='432' height='432' rx='60' fill='%23d1d5db' stroke='%23000000' stroke-width='24'/%3E%3Cpath d='M40 180 h432' stroke='%23000000' stroke-width='20'/%3E%3Crect x='70' y='70' width='372' height='85' rx='16' fill='%23a3e635' stroke='%23000000' stroke-width='14'/%3E%3Ctext x='410' y='135' font-family='monospace' font-size='65' font-weight='bold' fill='%23000000' text-anchor='end'%3E12.3%3C/text%3E%3Crect x='80' y='215' width='65' height='45' rx='12' fill='%2364748b' stroke='%23000000' stroke-width='10'/%3E%3Crect x='175' y='215' width='65' height='45' rx='12' fill='%2364748b' stroke='%23000000' stroke-width='10'/%3E%3Crect x='270' y='215' width='65' height='45' rx='12' fill='%2364748b' stroke='%23000000' stroke-width='10'/%3E%3Crect x='365' y='215' width='65' height='45' rx='12' fill='%2364748b' stroke='%23000000' stroke-width='10'/%3E%3Crect x='80' y='285' width='65' height='45' rx='12' fill='%2364748b' stroke='%23000000' stroke-width='10'/%3E%3Crect x='175' y='285' width='65' height='45' rx='12' fill='%2364748b' stroke='%23000000' stroke-width='10'/%3E%3Crect x='270' y='285' width='65' height='45' rx='12' fill='%2364748b' stroke='%23000000' stroke-width='10'/%3E%3Crect x='80' y='355' width='65' height='45' rx='12' fill='%2364748b' stroke='%23000000' stroke-width='10'/%3E%3Crect x='175' y='355' width='65' height='45' rx='12' fill='%2364748b' stroke='%23000000' stroke-width='10'/%3E%3Crect x='270' y='355' width='65' height='45' rx='12' fill='%2364748b' stroke='%23000000' stroke-width='10'/%3E%3Crect x='80' y='425' width='65' height='30' rx='10' fill='%2364748b' stroke='%23000000' stroke-width='10'/%3E%3Crect x='175' y='425' width='65' height='30' rx='10' fill='%2364748b' stroke='%23000000' stroke-width='10'/%3E%3Crect x='270' y='425' width='65' height='30' rx='10' fill='%2364748b' stroke='%23000000' stroke-width='10'/%3E%3Crect x='365' y='285' width='65' height='115' rx='16' fill='%23ea580c' stroke='%23000000' stroke-width='10'/%3E%3C/svg%3E'>
-
+    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='140' fill='%230f172a'/%3E%3Crect x='40' y='40' width='432' height='432' rx='60' fill='%23d1d5db' stroke='%23000000' stroke-width='24'/%3E%3Cpath d='M40 180 h432' stroke='%23000000' stroke-width='20'/%3E%3Crect x='70' y='70' width='372' height='85' rx='16' fill='%23a3e635' stroke='%23000000' stroke-width='14'/%3E%3Ctext x='410' y='135' font-family='monospace' font-size='65' font-weight='bold' fill='%23000000' text-anchor='end'%3E12.3%3C/text%3E%3Crect x='80' y='215' width='65' height='45' rx='12' fill='%2364748b' stroke='%23000000' stroke-width='10'/%3E%3Crect x='175' y='215' width='65' height='45' rx='12' fill='%2364748b' stroke='%23000000' stroke-width='10'/%3E%3Crect x='270' y='215' width='65' height='45' rx='12' fill='%2364748b' stroke='%23000000' stroke-width='10'/%3E%3Crect x='365' y='215' width='65' height='45' rx='12' fill='%2364748b' stroke='%23000000' stroke-width='10'/%3E%3Crect x='80' y='285' width='65' height='45' rx='12' fill='%2364748b' stroke='%23000000' stroke-width='10'/%3E%3Crect x='175' y='285' width='65' height='45' rx='12' fill='%2364748b' stroke='%23000000' stroke-width='10'/%3E%3Crect x='270' y='285' width='65' height='45' rx='12' fill='%2364748b' stroke='%23000000' stroke-width='10'/%3E%3Crect x='80' y='355' width='65' height='45' rx='12' fill='%2364748b' stroke='%23000000' stroke-width='10'/%3E%3Crect x='175' y='355' width='65' height='45' rx='12' fill='%2364748b' stroke='%23000000' stroke-width='10'/%3E%3Crect x='270' y='355' width='65' height='45' rx='12' fill='%2364748b' stroke='%23000000' stroke-width='10'/%3E%3Crect x='80' y='425' width='65' height='30' rx='10' fill='%2364748b' stroke='%23000000' stroke-width='10'/%3E%3Crect x='175' y='425' width='65' height='30' rx='10' fill='%2364748b' stroke='%23000000' stroke-width='10'/%3E%3Crect x='270' y='425' width='65' height='30' rx='10' fill='%2364748b' stroke='%23000000' stroke-width='10'/%3E%3Crect x='365' y='285' width='65' height='115' rx='16' fill='%23ea580c' stroke='%23000000' stroke-width='10'/%3E%3C/svg%3E">
     <style>
-        :root {
-            --bg-color: #090d16;
-            --calc-bg: #111823;
-            --display-bg: #151f32;
-            --btn-num: #1e293b;
-            --btn-utility: #334155;
-            --btn-op: #ea580c;
-            --btn-equal: #166534;
-            --text-main: #f8fafc;
-            --text-muted: #64748b;
-        }
-
-        * {
-            box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            user-select: none;
-            -webkit-user-select: none;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 10px;
-        }
-
-        .calculator-container {
-            background-color: var(--calc-bg);
-            width: 100%;
-            max-width: 440px;
-            border-radius: 30px;
-            padding: 20px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
-            border: 1px solid #1e293b;
-        }
-
-        .header-bar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 11px;
-            font-weight: 700;
-            color: var(--text-muted);
-            letter-spacing: 1px;
-            margin-bottom: 15px;
-            padding: 0 5px;
-        }
-
-        .header-icons {
-            display: flex;
-            gap: 12px;
-            font-size: 14px;
-        }
-
-        .screen {
-            background-color: var(--display-bg);
-            border-radius: 20px;
-            padding: 18px;
-            margin-bottom: 20px;
-            border: 1px solid #1e293b;
-            position: relative;
-        }
-
-        .screen-row {
-            display: flex;
-            flex-direction: column;
-            margin-bottom: 12px;
-        }
-
-        .screen-row:last-child {
-            margin-bottom: 0;
-        }
-
-        .label-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 4px;
-        }
-
-        .screen-label {
-            font-size: 10px;
-            font-weight: 700;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .badge {
-            font-size: 9px;
-            font-weight: 700;
-            background: #1e293b;
-            color: #38bdf8;
-            padding: 2px 6px;
-            border-radius: 4px;
-            border: 1px solid #334155;
-        }
-
-        .expression-output {
-            font-size: 28px;
-            min-height: 40px;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            flex-wrap: wrap;
-            font-weight: 400;
-        }
-
-        .result-output {
-            font-size: 42px;
-            font-weight: 700;
-            min-height: 55px;
-            display: flex;
-            align-items: flex-end;
-            gap: 6px;
-        }
-
-        .decimal-subtext {
-            font-size: 15px;
-            color: var(--text-muted);
-            text-align: right;
-            margin-top: -15px;
-            font-weight: 500;
-        }
-
-        .frac-container {
-            display: inline-flex;
-            flex-direction: column;
-            align-items: center;
-            vertical-align: middle;
-            line-height: 1;
-            padding: 0 4px;
-        }
-
-        .frac-num {
-            border-bottom: 2px solid var(--text-main);
-            padding-bottom: 2px;
-            font-size: 0.65em;
-            font-weight: 700;
-        }
-
-        .frac-den {
-            padding-top: 2px;
-            font-size: 0.65em;
-            font-weight: 700;
-        }
-
-        .pad-grid {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
-        button {
-            border: none;
-            border-radius: 14px;
-            font-size: 20px;
-            font-weight: 600;
-            color: var(--text-main);
-            cursor: pointer;
-            transition: background 0.1s ease, transform 0.05s ease;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 52px;
-        }
-
-        button:active {
-            transform: scale(0.96);
-            opacity: 0.8;
-        }
-
+        :root { --bg-color: #090d16; --calc-bg: #111823; --display-bg: #151f32; --btn-num: #1e293b; --btn-utility: #334155; --btn-op: #ea580c; --btn-equal: #166534; --text-main: #f8fafc; --text-muted: #64748b; }
+        * { box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, sans-serif; margin: 0; padding: 0; user-select: none; -webkit-user-select: none; -webkit-tap-highlight-color: transparent; }
+        body { background-color: var(--bg-color); color: var(--text-main); display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 10px; }
+        .calculator-container { background-color: var(--calc-bg); width: 100%; max-width: 440px; border-radius: 30px; padding: 20px; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7); border: 1px solid #1e293b; }
+        .header-bar { display: flex; justify-content: space-between; align-items: center; font-size: 11px; font-weight: 700; color: var(--text-muted); letter-spacing: 1px; margin-bottom: 15px; padding: 0 5px; }
+        .header-icons { display: flex; gap: 12px; font-size: 14px; }
+        .screen { background-color: var(--display-bg); border-radius: 20px; padding: 18px; margin-bottom: 20px; border: 1px solid #1e293b; }
+        .screen-row { display: flex; flex-direction: column; margin-bottom: 12px; }
+        .label-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
+        .screen-label { font-size: 10px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
+        .badge { font-size: 9px; font-weight: 700; background: #1e293b; color: #38bdf8; padding: 2px 6px; border-radius: 4px; border: 1px solid #334155; }
+        .expression-output { font-size: 28px; min-height: 40px; display: flex; align-items: center; gap: 4px; flex-wrap: wrap; }
+        .result-output { font-size: 42px; font-weight: 700; min-height: 55px; display: flex; align-items: flex-end; gap: 6px; }
+        .decimal-subtext { font-size: 15px; color: var(--text-muted); text-align: right; margin-top: -15px; font-weight: 500; }
+        .frac-container { display: inline-flex; flex-direction: column; align-items: center; vertical-align: middle; line-height: 1; padding: 0 4px; }
+        .frac-num { border-bottom: 2px solid var(--text-main); padding-bottom: 2px; font-size: 0.65em; font-weight: 700; }
+        .frac-den { padding-top: 2px; font-size: 0.65em; font-weight: 700; }
+        .pad-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-bottom: 20px; }
+        button { border: none; border-radius: 14px; font-size: 20px; font-weight: 600; color: var(--text-main); cursor: pointer; display: flex; justify-content: center; align-items: center; height: 52px; }
+        button:active { transform: scale(0.96); opacity: 0.8; }
         .btn-num { background-color: var(--btn-num); }
         .btn-util { background-color: var(--btn-utility); font-size: 16px; }
         .btn-op { background-color: var(--btn-op); font-size: 24px; }
         .btn-eq { background-color: var(--btn-equal); grid-column: span 2; font-size: 24px; }
         .btn-wide { grid-column: span 2; }
-
-        .section-title {
-            font-size: 10px;
-            font-weight: 700;
-            color: #38bdf8;
-            margin-bottom: 10px;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-        }
-
-        .quick-fractions-box {
-            display: grid;
-            grid-template-columns: repeat(8, 1fr);
-            gap: 6px;
-            margin-bottom: 20px;
-        }
-
-        .quick-fractions-box button {
-            height: 42px;
-            background-color: #0f172a;
-            border: 1px solid #1e293b;
-            border-radius: 8px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .quick-fractions-box button .frac-num,
-        .quick-fractions-box button .frac-den {
-            font-size: 11px;
-        }
-
-        .footer-actions {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            margin-bottom: 10px;
-        }
-
-        .footer-actions button {
-            background-color: #0f172a;
-            border: 1px solid #1e293b;
-            font-size: 11px;
-            font-weight: 700;
-            color: var(--text-muted);
-            height: 45px;
-            text-transform: uppercase;
-            flex-direction: column;
-            gap: 2px;
-        }
-
-        .footer-actions button:hover {
-            color: var(--text-main);
-        }
-
-        .info-bar {
-            text-align: center;
-            font-size: 10px;
-            color: #334155;
-            margin-top: 10px;
-        }
+        .section-title { font-size: 10px; font-weight: 700; color: #38bdf8; margin-bottom: 10px; letter-spacing: 0.5px; text-transform: uppercase; }
+        .quick-fractions-box { display: grid; grid-template-columns: repeat(8, 1fr); gap: 6px; margin-bottom: 20px; }
+        .quick-fractions-box button { height: 42px; background-color: #0f172a; border: 1px solid #1e293b; border-radius: 8px; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+        .quick-fractions-box button .frac-num, .quick-fractions-box button .frac-den { font-size: 11px; }
+        .footer-actions { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 10px; }
+        .footer-actions button { background-color: #0f172a; border: 1px solid #1e293b; font-size: 11px; font-weight: 700; color: var(--text-muted); height: 45px; text-transform: uppercase; flex-direction: column; gap: 2px; }
+        .info-bar { text-align: center; font-size: 10px; color: #334155; margin-top: 10px; }
     </style>
 </head>
 <body>
-
 <div class="calculator-container">
     <div class="header-bar">
         <span>FRACTION CALCULATOR</span>
-        <div class="header-icons">
-            <span>🌙</span> <span>🕒</span> <span>•••</span>
-        </div>
+        <div class="header-icons"><span>🌙</span> <span>🕒</span> <span>•••</span></div>
     </div>
-
     <div class="screen">
         <div class="screen-row">
-            <div class="label-row">
-                <span class="screen-label">Expression</span>
-                <span class="badge">FRAC ⇄</span>
-            </div>
+            <div class="label-row"><span class="screen-label">Expression</span><span class="badge">FRAC ⇄</span></div>
             <div class="expression-output" id="exprBox">0</div>
         </div>
         <div class="screen-row">
-            <div class="label-row">
-                <span class="screen-label">Result</span>
-                <span class="badge">FRAC</span>
-            </div>
+            <div class="label-row"><span class="screen-label">Result</span><span class="badge">FRAC</span></div>
             <div class="result-output" id="resBox">-</div>
         </div>
         <div class="decimal-subtext" id="decBox"></div>
     </div>
-
     <div class="pad-grid">
         <button class="btn-util" onclick="handleAction('AC')">AC</button>
         <button class="btn-util" onclick="handleAction('BACK')">⌫</button>
         <button class="btn-util" onclick="handleAction('%')">%</button>
         <button class="btn-util" onclick="handleAction('±')">±</button>
         <button class="btn-op" onclick="handleOp('/')">÷</button>
-
         <button class="btn-num" onclick="handleNum('7')">7</button>
         <button class="btn-num" onclick="handleNum('8')">8</button>
         <button class="btn-num" onclick="handleNum('9')">9</button>
         <button class="btn-util" onclick="handleAction('sq')">x²</button>
         <button class="btn-op" onclick="handleOp('*')">×</button>
-
         <button class="btn-num" onclick="handleNum('4')">4</button>
         <button class="btn-num" onclick="handleNum('5')">5</button>
         <button class="btn-num" onclick="handleNum('6')">6</button>
         <button class="btn-util" onclick="handleAction('ab')">a/b</button>
         <button class="btn-op" onclick="handleOp('-')">−</button>
-
         <button class="btn-num" onclick="handleNum('1')">1</button>
         <button class="btn-num" onclick="handleNum('2')">2</button>
         <button class="btn-num" onclick="handleNum('3')">3</button>
         <button class="btn-util" onclick="handleNum('.')">.</button>
         <button class="btn-op" onclick="handleOp('+')">+</button>
-
         <button class="btn-num btn-wide" onclick="handleNum('0')">0</button>
         <button class="btn-util" onclick="handleAction('space')">␣</button>
         <button class="btn-eq" onclick="evaluateExpr()">=</button>
     </div>
-
     <div class="section-title">Fractions (in 32nds)</div>
     <div class="quick-fractions-box" id="quickFracBox"></div>
-
     <div class="footer-actions">
-        <button onclick="handleAction('BACK')">
-            <span>←</span><span>Undo</span>
-        </button>
-        <button onclick="handleAction('AC')" style="color: #ef4444;">
-            <span>🗑️</span><span>Clear Entry</span>
-        </button>
-        <button onclick="copyResult()">
-            <span>📋</span><span>Copy Result</span>
-        </button>
+        <button onclick="handleAction('BACK')"><span>←</span><span>Undo</span></button>
+        <button onclick="handleAction('AC')" style="color: #ef4444;"><span>🗑️</span><span>Clear Entry</span></button>
+        <button onclick="copyResult()"><span>📋</span><span>Copy Result</span></button>
     </div>
-
     <div class="info-bar">All results are rounded to the nearest 1/32</div>
 </div>
-
 <script>
     let tokens = [];
-
-    const segments = [
-        [1,32],[1,16],[3,32],[1,8],[5,32],[3,16],[7,32],[1,4],
-        [9,32],[5,16],[11,32],[3,8],[13,32],[7,16],[15,32],[1,2],
-        [17,32],[9,16],[19,32],[5,8],[21,32],[11,16],[23,32],[3,4],
-        [25,32],[13,16],[27,32],[7,8],[29,32],[15,16],[31,32],[1,1]
-    ];
-
+    const segments = [[1,32],[1,16],[3,32],[1,8],[5,32],[3,16],[7,32],[1,4],[9,32],[5,16],[11,32],[3,8],[13,32],[7,16],[15,32],[1,2],[17,32],[9,16],[19,32],[5,8],[21,32],[11,16],[23,32],[3,4],[25,32],[13,16],[27,32],[7,8],[29,32],[15,16],[31,32],[1,1]];
     const quickFracBox = document.getElementById('quickFracBox');
     segments.forEach(f => {
         let btn = document.createElement('button');
-        if(f[0] === 1 && f[1] === 1) {
-            btn.innerHTML = `<span style="font-size:14px; font-weight:700;">1</span>`;
-        } else {
-            btn.innerHTML = `<div class="frac-container"><span class="frac-num">${f[0]}</span><span class="frac-den">${f[1]}</span></div>`;
-        }
-        btn.onclick = () => {
-            if(f[0] === 1 && f[1] === 1) {
-                handleNum('1');
-            } else {
-                tokens.push({type: 'fraction', num: f[0], den: f[1]});
-                renderDisplay();
-            }
-        };
+        if(f[0] === 1 && f[1] === 1) { btn.innerHTML = `<span style="font-size:14px;font-weight:700;">1</span>`; }
+        else { btn.innerHTML = `<div class="frac-container"><span class="frac-num">${f[0]}</span><span class="frac-den">${f[1]}</span></div>`; }
+        btn.onclick = () => { if(f[0] === 1 && f[1] === 1) { handleNum('1'); } else { tokens.push({type: 'fraction', num: f[0], den: f[1]}); renderDisplay(); } };
         quickFracBox.appendChild(btn);
     });
-
     function renderDisplay() {
         const out = document.getElementById('exprBox');
-        if (tokens.length === 0) {
-            out.innerHTML = "0";
-            return;
-        }
+        if (tokens.length === 0) { out.innerHTML = "0"; return; }
         let html = "";
         tokens.forEach(t => {
-            if (t.type === 'number' || t.type === 'symbol') {
-                html += t.val;
-            } else if (t.type === 'operator') {
-                let m = {'+': ' + ', '-': ' − ', '*': ' × ', '/': ' ÷ '};
-                html += m[t.val] || t.val;
-            } else if (t.type === 'fraction') {
-                html += `<div class="frac-container"><span class="frac-num">${t.num}</span><span class="frac-den">${t.den}</span></div>`;
-            } else if (t.type === 'space') {
-                html += " ";
-            }
+            if (t.type === 'number' || t.type === 'symbol') { html += t.val; }
+            else if (t.type === 'operator') { let m = {'+': ' + ', '-': ' − ', '*': ' × ', '/': ' ÷ '}; html += m[t.val] || t.val; }
+            else if (t.type === 'fraction') { html += `<div class="frac-container"><span class="frac-num">${t.num}</span><span class="frac-den">${t.den}</span></div>`; }
+            else if (t.type === 'space') { html += " "; }
         });
         out.innerHTML = html;
     }
-
-    function handleNum(n) {
-        let last = tokens[tokens.length - 1];
-        if (last && last.type === 'number') {
-            last.val += n;
-        } else {
-            tokens.push({type: 'number', val: n});
-        }
-        renderDisplay();
-    }
-
-    function handleOp(op) {
-        tokens.push({type: 'operator', val: op});
-        renderDisplay();
-    }
-
+    function handleNum(n) { let last = tokens[tokens.length - 1]; if (last && last.type === 'number') { last.val += n; } else { tokens.push({type: 'number', val: n}); } renderDisplay(); }
+    function handleOp(op) { tokens.push({type: 'operator', val: op}); renderDisplay(); }
     function handleAction(act) {
-        if (act === 'AC') {
-            tokens = [];
-            document.getElementById('resBox').innerHTML = "-";
-            document.getElementById('decBox').innerHTML = "";
-        } else if (act === 'BACK') {
-            if (tokens.length > 0) {
-                let last = tokens[tokens.length - 1];
-                if (last.type === 'number' && last.val.length > 1) {
-                    last.val = last.val.slice(0, -1);
-                } else {
-                    tokens.pop();
-                }
-            }
-        } else if (act === 'space') {
-            tokens.push({type: 'space', val: ' '});
-        } else if (act === 'ab') {
-            tokens.push({type: 'symbol', val: '/'});
-        } else if (act === 'sq') {
-            tokens.push({type: 'symbol', val: '^2'});
-        } else if (act === '±' || act === '%') {
-            tokens.push({type: 'symbol', val: act});
-        }
+        if (act === 'AC') { tokens = []; document.getElementById('resBox').innerHTML = "-"; document.getElementById('decBox').innerHTML = ""; }
+        else if (act === 'BACK') { if (tokens.length > 0) { let last = tokens[tokens.length - 1]; if (last.type === 'number' && last.val.length > 1) { last.val = last.val.slice(0, -1); } else { tokens.pop(); } } }
+        else if (act === 'space') { tokens.push({type: 'space', val: ' '}); }
+        else if (act === 'ab') { tokens.push({type: 'symbol', val: '/'}); }
+        else if (act === 'sq') { tokens.push({type: 'symbol', val: '^2'}); }
+        else if (act === '±' || act === '%') { tokens.push({type: 'symbol', val: act}); }
         renderDisplay();
     }
-
     function gcd(a, b) { return b ? gcd(b, a % b) : Math.abs(a); }
-
     function evaluateExpr() {
         try {
             let mathString = "";
@@ -437,68 +136,26 @@
                 let curr = tokens[i];
                 if (curr.type === 'number') {
                     let next = tokens[i+1];
-                    if (next && next.type === 'space' && tokens[i+2] && tokens[i+2].type === 'fraction') {
-                        mathString += `(${curr.val}+(${tokens[i+2].num}/${tokens[i+2].den}))`;
-                        i += 2;
-                    } else if (next && next.type === 'fraction') {
-                        mathString += `(${curr.val}+(${next.num}/${next.den}))`;
-                        i += 1;
-                    } else {
-                        mathString += curr.val;
-                    }
-                } else if (curr.type === 'fraction') {
-                    mathString += `(${curr.num}/${curr.den})`;
-                } else if (curr.type === 'operator') {
-                    mathString += curr.val;
-                } else if (curr.type === 'symbol') {
-                    if (curr.val === '^2') mathString += '**2';
-                    else mathString += curr.val;
-                }
+                    if (next && next.type === 'space' && tokens[i+2] && tokens[i+2].type === 'fraction') { mathString += `(${curr.val}+(${tokens[i+2].num}/${tokens[i+2].den}))`; i += 2; }
+                    else if (next && next.type === 'fraction') { mathString += `(${curr.val}+(${next.num}/${next.den}))`; i += 1; }
+                    else { mathString += curr.val; }
+                } else if (curr.type === 'fraction') { mathString += `(${curr.num}/${curr.den})`; }
+                else if (curr.type === 'operator') { mathString += curr.val; }
+                else if (curr.type === 'symbol') { if (curr.val === '^2') mathString += '**2'; else mathString += curr.val; }
             }
-
             if (mathString.trim() === "") return;
             let decValue = Function(`"use strict"; return (${mathString})`)();
             if (isNaN(decValue) || !isFinite(decValue)) throw new Error();
-
             document.getElementById('decBox').innerHTML = `= ${decValue.toFixed(4)}`;
-
-            let prefix = decValue < 0 ? "-" : "";
-            let absVal = Math.abs(decValue);
-            let whole = Math.floor(absVal);
-            let fractionPart = absVal - whole;
-
-            if (fractionPart < 0.0001) {
-                document.getElementById('resBox').innerHTML = prefix + whole;
-                return;
-            }
-
-            let steps = 32;
-            let numerator = Math.round(fractionPart * steps);
-
-            if (numerator === steps) {
-                whole += 1;
-                document.getElementById('resBox').innerHTML = prefix + whole;
-            } else if (numerator === 0) {
-                document.getElementById('resBox').innerHTML = prefix + whole;
-            } else {
-                let div = gcd(numerator, steps);
-                let finalNum = numerator / div;
-                let finalDen = steps / div;
-                let wholeText = whole > 0 ? `${prefix}${whole} ` : (prefix === "-" ? "-" : "");
-                document.getElementById('resBox').innerHTML = `${wholeText}<div class="frac-container"><span class="frac-num">${finalNum}</span><span class="frac-den">${finalDen}</span></div>`;
-            }
-        } catch (e) {
-            document.getElementById('resBox').innerHTML = "<span style='color:#ef4444; font-size:22px;'>Error</span>";
-        }
+            let prefix = decValue < 0 ? "-" : "", absVal = Math.abs(decValue), whole = Math.floor(absVal), fractionPart = absVal - whole;
+            if (fractionPart < 0.0001) { document.getElementById('resBox').innerHTML = prefix + whole; return; }
+            let steps = 32, numerator = Math.round(fractionPart * steps);
+            if (numerator === steps) { whole += 1; document.getElementById('resBox').innerHTML = prefix + whole; }
+            else if (numerator === 0) { document.getElementById('resBox').innerHTML = prefix + whole; }
+            else { let div = gcd(numerator, steps), finalNum = numerator / div, finalDen = steps / div; let wholeText = whole > 0 ? `${prefix}${whole} ` : (prefix === "-" ? "-" : ""); document.getElementById('resBox').innerHTML = `${wholeText}<div class="frac-container"><span class="frac-num">${finalNum}</span><span class="frac-den">${finalDen}</span></div>`; }
+        } catch (e) { document.getElementById('resBox').innerHTML = "<span style='color:#ef4444; font-size:22px;'>Error</span>"; }
     }
-
-    function copyResult() {
-        const val = document.getElementById('resBox').innerText;
-        if(val !== "-") {
-            navigator.clipboard.writeText(val);
-            alert("Result copied to clipboard!");
-        }
-    }
+    function copyResult() { const val = document.getElementById('resBox').innerText; if(val !== "-") { navigator.clipboard.writeText(val); alert("Result copied to clipboard!"); } }
 </script>
 </body>
 </html>
